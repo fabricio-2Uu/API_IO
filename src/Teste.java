@@ -6,7 +6,7 @@ public class Teste {
 		String nomeArq = "Teste.txt";
 		try (ObjectOutputStream out = new ObjectOutputStream(
 				new FileOutputStream(nomeArq) );) {
-			String obj = "teste - objeto";
+			Pessoa obj = new Pessoa("Joao", 56);
 			out.writeObject(obj);
 			out.flush();
 			
@@ -20,7 +20,7 @@ public class Teste {
 			System.out.println("Erro de I/O.");
 		}
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream( nomeArq) );) {
-			String obj = (String) in.readObject();
+			Pessoa obj = (Pessoa) in.readObject();
 			System.out.println(obj);
 			
 		} catch (StreamCorruptedException e) {
